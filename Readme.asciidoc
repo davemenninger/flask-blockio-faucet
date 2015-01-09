@@ -8,25 +8,35 @@ This is a dogecoin faucet, connected to a http://block.io/ wallet, that can be d
 * deployable to heroku
 * testable with travis-ci
 
+= Buttons!
+
+image:https://travis-ci.org/davemenninger/flask-blockio-faucet.svg?branch=master["Build Status", link="https://travis-ci.org/davemenninger/flask-blockio-faucet"]
+
+image:https://www.herokucdn.com/deploy/button.png["Deploy", link=https://heroku.com/deploy?template=https://github.com/heroku/node-js-sample"]
+
 = Usage
 
 Create an `.env` file with `BLOCKIO_APIKEY` and `BLOCKIO_SECRETPIN` in it.
 
 Use virtualenv:
+
 * `virtualenv env`
 * `source ./env/bin/activate` or ( since I use fish ) `. ./env/bin/activate.fish`
 * `pip install -r requirements.txt`
 
 Run locally:
+
 * `foreman start`
 
 Deploy on heroku:
+
 * `heroku create`
 * `git push heroku master`
 * `heroku config:push`
 
 = Credits
 
-* http://block.io/
-* http://heroku.com/
-* http://travis-ci.org/
+* https://dogecoin.com/
+* https://block.io/
+* https://heroku.com/
+* https://travis-ci.org/
