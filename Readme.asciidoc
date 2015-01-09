@@ -22,7 +22,7 @@ Use virtualenv:
 
 * `virtualenv env`
 * `source ./env/bin/activate` or ( since I use fish ) `. ./env/bin/activate.fish`
-* `pip install -r requirements.txt`
+* `pip install -r requirements.txt` ( if pycrypto doesn't install, you might need `apt-get install python-dev` ) 
 
 Run locally:
 
@@ -40,3 +40,7 @@ Deploy on heroku:
 * https://block.io/
 * https://heroku.com/
 * https://travis-ci.org/
+
+= Donate!
+
+Doge: ACF38TH9c77TgorQPj8gYcCncLcfrp8174

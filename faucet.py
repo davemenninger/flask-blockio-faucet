@@ -17,6 +17,7 @@ app.logger.info("faucet is restarting")
 # TODO: catch KeyError
 apikey = os.environ['BLOCKIO_APIKEY']
 secretpin = os.environ['BLOCKIO_SECRETPIN']
+donation_address = os.environ['DONATION_ADDRESS']
 
 from block_io import BlockIo
 version = 2
@@ -28,7 +29,7 @@ def wow():
 
 @app.route("/")
 def home():
-    return render_template('home.html',balance=wow())
+    return render_template('home.html', balance=wow(), donation_address=donation_address )
 
 if __name__ == '__main__':
     app.run()

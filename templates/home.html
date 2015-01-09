@@ -8,4 +8,8 @@
   {% else %}
     unknown
   {% endif %}
+  <br/>
+  {% if donation_address %}
+  donate doge here: {{ donation_address }}
+  {% endif %}
 {% endblock %}
