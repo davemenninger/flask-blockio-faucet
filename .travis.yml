@@ -1,0 +1,10 @@
+language: python
+python:
+- '2.7'
+- '3.3'
+- pypy
+script: python faucet_test.py
+env:
+  global:
+  - secure: KLJ9hTW1eTCPA7KyTMiGhLnni6FRUB1hUyXGiPH3fVwV+feuAhNfEbVIenG/4Rf5vyPgHLdIJ/YvfeA22WNTZXZ/df9V0njluBAeIl3QBQtl+tEhzs/03sTuKbzL6i0V31oQhR9+bHEvCPnYLmO2neppRXA42I0iCvSHrAVZkf4=
+  - secure: cPm3t3AnVufLJ/Z1Lg7sBWMTh9fFXKaLrYWKehh3Sg7J7nh+lce7SlgKg7fqwtwKWljTxlXMzACNfP1G45CzkjlT995E2FLho2bi1Jke7wlq4SNd8T02uF+A7Dl4h25ao3rSoqTnMfwZhIRXhVJBw9BYGqecloCja6b/6hlUMCk=
