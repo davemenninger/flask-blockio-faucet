@@ -1,0 +1,15 @@
+= Flask Block.io Faucet
+
+This is a dogecoin faucet, connected to a http://block.io/ wallet, that can be deployed to Heroku.
+
+= Goals
+
+* no dedicated dogecoind node needed
+* deployable to heroku
+* testable with travis-ci
+
+= Credits
+
+* http://block.io/
+* http://heroku.com/
+* http://travis-ci.org/

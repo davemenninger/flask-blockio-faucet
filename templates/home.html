@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}<p>Home</p>{% endblock %}
+{% block footer %}
+  doge balance is
+  {% if balance %}
+    {{ balance }}
+  {% else %}
+    unknown
+  {% endif %}
+{% endblock %}
