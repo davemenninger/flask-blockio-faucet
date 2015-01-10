@@ -2,7 +2,7 @@
 
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 app = Flask(__name__)
 app.debug = True
 
@@ -31,9 +31,13 @@ def such():
     app.logger.info('address='+donation_address)
     return donation_address
 
-@app.route("/")
+@app.route("/", methods=['GET','POST'] )
 def home():
-    return render_template('home.html', balance=wow(), donation_address=such() )
+    if request.method == 'POST':
+        requested_address = request.form['address']
+    else:
+        requested_address = ''
+    return render_template('home.html', requested_address=requested_address, balance=wow(), donation_address=such() )
 
 if __name__ == '__main__':
     app.run()

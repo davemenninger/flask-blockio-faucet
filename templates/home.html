@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
 {% block title %}Home{% endblock %}
-{% block content %}<p>Home</p>{% endblock %}
+{% block content %}
+  <p>Home</p>
+  {% if requested_address != '' %}
+    <p>You requested: {{ requested_address }} </p>
+  {% else %}
+    <form action="" method="POST">
+      <input type=text name=address />
+      <input type=submit value="Gib" />
+    </form>
+  {% endif %}
+{% endblock %}
 {% block footer %}
   doge balance is
   {% if balance %}
