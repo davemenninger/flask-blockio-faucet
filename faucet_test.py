@@ -16,9 +16,19 @@ class FacuetTestCase(unittest.TestCase):
         assert 'doge balance is' in rv.data
 
     def test_dontation_address(self):
-       rv = self.app.get('/')
-       DOGEREGEX = re.compile('[1-9A-HJ-NP-Za-km-z]{34}')
-       assert DOGEREGEX.search(rv.data)
+        rv = self.app.get('/')
+        DOGEREGEX = re.compile('[1-9A-HJ-NP-Za-km-z]{34}')
+        assert DOGEREGEX.search(rv.data)
+
+    def submit_address(self, address):
+        return self.app.post('/', data=dict(address=address) )
+
+    def test_addresses(self):
+        rv = self.submit_address('foo')
+        assert 'not good' in rv.data
+        rv = self.submit_address('DH8EkHiwpzCmjm3R9sCcxdUqqgykmwR5f1')
+        assert 'WOW' in rv.data
+
 
 if __name__ == '__main__':
    unittest.main()

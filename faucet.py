@@ -22,22 +22,44 @@ from block_io import BlockIo
 version = 2
 b = BlockIo(apikey,secretpin,version)
 
+import requests
+
 def wow():
     balance = b.get_balance()['data']['available_balance']
     return balance
 
 def such():
     donation_address = b.get_my_addresses()['data']['addresses'][0]['address']
-    app.logger.info('address='+donation_address)
     return donation_address
+
+def very(address):
+    response = requests.get('https://chain.so/api/v2/is_address_valid/DOGE/'+address)
+    if response.status_code == 200:
+        content = response.json()
+        return content['data']['is_valid']
+    else:
+        return False
 
 @app.route("/", methods=['GET','POST'] )
 def home():
     if request.method == 'POST':
         requested_address = request.form['address']
+        if very(requested_address):
+            is_request_good = True
+            message = 'The address is good.'
+        else:
+            is_request_good = False
+            message = 'The address is not good.'
     else:
+        is_request_good = False
         requested_address = ''
-    return render_template('home.html', requested_address=requested_address, balance=wow(), donation_address=such() )
+        message = 'Input an address.'
+    return render_template('home.html',
+            is_request_good=is_request_good,
+            requested_address=requested_address,
+            message=message,
+            balance=wow(),
+            donation_address=such() )
 
 if __name__ == '__main__':
     app.run()

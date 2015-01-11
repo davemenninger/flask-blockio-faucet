@@ -22,7 +22,7 @@ Use virtualenv:
 
 * `virtualenv env`
 * `source ./env/bin/activate` or ( since I use fish ) `. ./env/bin/activate.fish`
-* `pip install -r requirements.txt` ( if pycrypto doesn't install, you might need `apt-get install python-dev` ) 
+* `pip install -r requirements.txt` ( if pycrypto doesn't install, you might need `apt-get install python-dev` )
 
 Run locally:
 
@@ -38,8 +38,14 @@ Deploy on heroku:
 
 * https://dogecoin.com/
 * https://block.io/
+* https://chain.so/
 * https://heroku.com/
 * https://travis-ci.org/
+* http://www.favicon.cc/?action=icon&file_id=690977
+* https://github.com/plaprade/Mojocoin-Faucet
+* https://github.com/grimd34th/DogeFaucet
+* https://github.com/justinfay/pyfaucet
+* https://github.com/craigatron/freedoge
 
 = Donate!
 

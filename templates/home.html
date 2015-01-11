@@ -2,13 +2,19 @@
 {% block title %}Home{% endblock %}
 {% block content %}
   <p>Home</p>
-  {% if requested_address != '' %}
+  {% if is_request_good %}
+    {{ message }}
+    <p>WOW</p>
     <p>You requested: {{ requested_address }} </p>
   {% else %}
+    {{ message }}
     <form action="" method="POST">
       <input type=text name=address />
       <input type=submit value="Gib" />
     </form>
+    {% if requested_address != '' %}
+      <p>You requested: {{ requested_address }} </p>
+    {% endif %}
   {% endif %}
 {% endblock %}
 {% block footer %}
