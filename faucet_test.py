@@ -25,9 +25,9 @@ class FacuetTestCase(unittest.TestCase):
 
     def test_addresses(self):
         rv = self.submit_address('foo')
-        assert 'not good' in rv.data
+        assert 'address is not good' in rv.data
         rv = self.submit_address('DH8EkHiwpzCmjm3R9sCcxdUqqgykmwR5f1')
-        assert 'WOW' in rv.data
+        assert 'address is good' in rv.data
 
 
 if __name__ == '__main__':

@@ -26,7 +26,7 @@ import requests
 
 def wow():
     balance = b.get_balance()['data']['available_balance']
-    return balance
+    return float(balance)
 
 def such():
     donation_address = b.get_my_addresses()['data']['addresses'][0]['address']
@@ -42,11 +42,16 @@ def very(address):
 
 @app.route("/", methods=['GET','POST'] )
 def home():
+    balance = wow()
     if request.method == 'POST':
         requested_address = request.form['address']
         if very(requested_address):
-            is_request_good = True
-            message = 'The address is good.'
+            if balance > 0:
+                is_request_good = True
+                message = 'The address is good and we have coins for you.'
+            else:
+                is_request_good = False
+                message = 'The address is good but we are out of coins right now.'
         else:
             is_request_good = False
             message = 'The address is not good.'
@@ -58,7 +63,7 @@ def home():
             is_request_good=is_request_good,
             requested_address=requested_address,
             message=message,
-            balance=wow(),
+            balance=balance,
             donation_address=such() )
 
 if __name__ == '__main__':

@@ -5,6 +5,5 @@ python:
 script: python faucet_test.py
 env:
   global:
-  - secure: KLJ9hTW1eTCPA7KyTMiGhLnni6FRUB1hUyXGiPH3fVwV+feuAhNfEbVIenG/4Rf5vyPgHLdIJ/YvfeA22WNTZXZ/df9V0njluBAeIl3QBQtl+tEhzs/03sTuKbzL6i0V31oQhR9+bHEvCPnYLmO2neppRXA42I0iCvSHrAVZkf4=
-  - secure: cPm3t3AnVufLJ/Z1Lg7sBWMTh9fFXKaLrYWKehh3Sg7J7nh+lce7SlgKg7fqwtwKWljTxlXMzACNfP1G45CzkjlT995E2FLho2bi1Jke7wlq4SNd8T02uF+A7Dl4h25ao3rSoqTnMfwZhIRXhVJBw9BYGqecloCja6b/6hlUMCk=
-  - secure: Pi+smnolKENjTg4PItnJFczgIp2X4cJd6B7p8TcJnlOENYONGDw/bY9XbiKpHf+upFW32vARoQXjWoonCBHyd12MRx+pT8Hu1Zh/C6KV8d6mfO3JjW/Hx+5Z+gHAhBr+VefhI5sPO61k1Scw5BlsABJ6GOnveMhDeZtvDU/W1Ic=
+  - secure: gX17qsOVNaMmKojFwj/c1y8JocjsI1FZD2LgCsDm3z//4fsVRgG7EaQCpSkVLqaQRlpLfDcW3cmumgzvpn0OjdeqXGACVauCsAYv66mkpYICvi6z1uH3f4EvYkso17QxM4ybmdxxmLXbwcF/tJ9iHe6xI4tJ0PGyi5JOcnRiSXM=
+  - secure: V6ffOGeqT7PR+xiSZvYgT4EddbSf3/U95em8+xCBR4M9qji8odSxpaZMCjl1iYZxnGGREHWnFgDK8b4qo8OSm/FImnChsKUqg14/zAlGQhnMof8zIkA9J/qoO73DQJaoL5/W2qD7geYNqpEchf/SonflwtlrQKXaP+kc29n/b9c=

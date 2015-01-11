@@ -18,12 +18,7 @@
   {% endif %}
 {% endblock %}
 {% block footer %}
-  doge balance is
-  {% if balance %}
-    {{ balance }}
-  {% else %}
-    unknown
-  {% endif %}
+  doge balance is {{ balance }}
   <br/>
   {% if donation_address %}
   donate doge here: {{ donation_address }}
