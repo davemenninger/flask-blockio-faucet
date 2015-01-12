@@ -17,7 +17,7 @@ image:https://www.herokucdn.com/deploy/button.png["Deploy", link=https://heroku.
 
 = Usage
 
-Create an `.env` file with `BLOCKIO_APIKEY` and `BLOCKIO_SECRETPIN` in it.
+Create an `.env` file with `BLOCKIO_APIKEY` and `BLOCKIO_SECRETPIN` in it.  WARNING: Anyone with these two pieces of data can spend your coins; be careful!
 
 Use virtualenv:
 
@@ -28,6 +28,10 @@ Use virtualenv:
 Run locally:
 
 * `foreman start`
+
+Test locally:
+
+* `foreman run python faucet_test.py`
 
 Deploy on heroku:
 

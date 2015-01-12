@@ -26,6 +26,9 @@ addresses = b.get_my_addresses()
 donation_address = addresses['data']['addresses'][0]['address']
 network = addresses['data']['network']
 
+# TODO: get this from env or make random?
+drip_amount = '10'
+
 import requests
 
 def wow():
@@ -45,10 +48,12 @@ def home():
     balance = wow()
     if request.method == 'POST':
         requested_address = request.form['address']
-        if balance > 0:
+        if balance > 0 and balance > float(drip_amount):
             if very(requested_address):
                 is_request_good = True
-                message = 'The address is good and we have coins for you.'
+                message = 'The address is good and we have '+drip_amount+' coins for you.'
+                # TODO: figure out rate limiting
+                # r = b.withdraw(amounts=drip_amount,to_addresses=requested_address)
             else:
                 is_request_good = False
                 message = 'The address is not good.'
