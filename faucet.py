@@ -22,18 +22,18 @@ from block_io import BlockIo
 version = 2
 b = BlockIo(apikey,secretpin,version)
 
+addresses = b.get_my_addresses()
+donation_address = addresses['data']['addresses'][0]['address']
+network = addresses['data']['network']
+
 import requests
 
 def wow():
     balance = b.get_balance()['data']['available_balance']
     return float(balance)
 
-def such():
-    donation_address = b.get_my_addresses()['data']['addresses'][0]['address']
-    return donation_address
-
 def very(address):
-    response = requests.get('https://chain.so/api/v2/is_address_valid/DOGE/'+address)
+    response = requests.get('https://chain.so/api/v2/is_address_valid/'+network+'/'+address)
     if response.status_code == 200:
         content = response.json()
         return content['data']['is_valid']
@@ -45,16 +45,16 @@ def home():
     balance = wow()
     if request.method == 'POST':
         requested_address = request.form['address']
-        if very(requested_address):
-            if balance > 0:
+        if balance > 0:
+            if very(requested_address):
                 is_request_good = True
                 message = 'The address is good and we have coins for you.'
             else:
                 is_request_good = False
-                message = 'The address is good but we are out of coins right now.'
+                message = 'The address is not good.'
         else:
             is_request_good = False
-            message = 'The address is not good.'
+            message = 'We are out of coins right now.'
     else:
         is_request_good = False
         requested_address = ''
@@ -64,7 +64,7 @@ def home():
             requested_address=requested_address,
             message=message,
             balance=balance,
-            donation_address=such() )
+            donation_address=donation_address )
 
 if __name__ == '__main__':
     app.run()
