@@ -4,7 +4,6 @@ import os
 
 from flask import Flask, render_template, request
 app = Flask(__name__)
-app.debug = True
 
 import logging
 from logging import StreamHandler
@@ -31,6 +30,11 @@ drip_amount = '10'
 
 import requests
 
+import time
+limited = {}
+hours_to_wait = 8
+seconds_to_wait = 60 * 60 * hours_to_wait
+
 def wow():
     balance = b.get_balance()['data']['available_balance']
     return float(balance)
@@ -43,6 +47,17 @@ def very(address):
     else:
         return False
 
+def excite(address):
+    if address in limited:
+        if limited[address] + seconds_to_wait < time.time():
+            del limited[address]
+            return True
+        else:
+            return False
+    else:
+        limited[address] = time.time()
+        return True
+
 @app.route("/", methods=['GET','POST'] )
 def home():
     balance = wow()
@@ -50,10 +65,14 @@ def home():
         requested_address = request.form['address']
         if balance > 0 and balance > float(drip_amount):
             if very(requested_address):
-                is_request_good = True
-                message = 'The address is good and we have '+drip_amount+' coins for you.'
-                # TODO: figure out rate limiting
-                # r = b.withdraw(amounts=drip_amount,to_addresses=requested_address)
+                if excite(requested_address):
+                    is_request_good = True
+                    message = 'The address is good and we have '+drip_amount+' coins for you.'
+                    r = b.withdraw(amounts=drip_amount,to_addresses=requested_address)
+                else:
+                    is_request_good = False
+                    seconds_left = str( int( ( limited[requested_address] + seconds_to_wait ) - time.time() ) )
+                    message = 'Sorry, you have to wait a while to get more: '+seconds_left+' seconds...'
             else:
                 is_request_good = False
                 message = 'The address is not good.'
