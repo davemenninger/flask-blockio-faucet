@@ -11,6 +11,9 @@ file_handler = StreamHandler()
 app.logger.setLevel(logging.DEBUG)  # set the desired logging level here
 app.logger.addHandler(file_handler)
 
+from decimal import Decimal, getcontext
+getcontext().prec = 8
+
 app.logger.info("faucet is restarting")
 
 # TODO: catch KeyError
@@ -37,7 +40,7 @@ seconds_to_wait = 60 * 60 * hours_to_wait
 
 def wow():
     balance = b.get_balance()['data']['available_balance']
-    return float(balance)
+    return Decimal(balance)
 
 def very(address):
     response = requests.get('https://chain.so/api/v2/is_address_valid/'+network+'/'+address)
@@ -63,7 +66,7 @@ def home():
     balance = wow()
     if request.method == 'POST':
         requested_address = request.form['address']
-        if balance > 0 and balance > float(drip_amount):
+        if balance > 0 and balance > Decimal(drip_amount):
             if very(requested_address):
                 if excite(requested_address):
                     is_request_good = True
